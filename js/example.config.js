@@ -11,7 +11,7 @@ var config = {
             units: 'imperial',
             // if you want a different lang for the weather that what is set above, change it here
             lang: 'en',
-            APPID: 'YOUR_FREE_OPENWEATHER_API_KEY'
+            APPID: ''
         }
     },
     compliments: {
