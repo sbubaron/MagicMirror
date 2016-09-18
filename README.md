@@ -49,4 +49,4 @@ Takes the user's inserted location, language, unit type, and OpenWeatherMap API 
 ###[MagicMirror-Extensions by PaViRo](https://github.com/paviro/MagicMirror-Extensions)
 
 **Current features:** FRITZ!Box Callmonitor <br>
-**Future features:** Faceregognition, personalized views, online banking through HBCI and multiple calenders based on faceregognition.
+**Future features:** Faceregognition, personalized views, online banking through HBCI and multiple calenders based on faceregognition.# Spiegel
