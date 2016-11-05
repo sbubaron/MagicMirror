@@ -1,40 +1,120 @@
 <html>
 <head>
 	<title>Magic Mirror</title>
-	<style type="text/css">
-		<?php include('css/main.css') ?>
-	</style>
-	<link rel="stylesheet" type="text/css" href="css/weather-icons.css">
-	<script type="text/javascript">
-		var gitHash = '<?php echo trim(`git rev-parse HEAD`) ?>';
-	</script>
+  <link type="text/css" rel="stylesheet" href="/css/lib/fullcalendar/fullcalendar.css" media="all">
+  <link type="text/css" rel="stylesheet" href="/css/flex.css" media="all">
+
+  <link type="text/css" rel="stylesheet" href="/css/style.css" media="all">
+	<link rel="stylesheet" type="text/css" href="/css/weather-icons.css">
+
 	<meta name="google" value="notranslate" />
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
 </head>
 <body>
 
-	<div class="top left"><div class="date small dimmed"></div><div class="time"></div><div class="calendar xxsmall"></div></div>
-	<div class="top right"><div class="windsun small dimmed"></div><div class="temp"></div><div class="forecast small dimmed"></div></div>
-	<div class="center-ver center-hor"><!-- <div class="dishwasher light">Vaatwasser is klaar!</div> --></div>
-	<div class="lower-third center-hor"><div class="compliment light"></div></div>
-	<div class="bottom center-hor"><div class="news medium"></div></div>
+  <main class="container clear-night">
+
+  <section class="top">
+  <div class="top-left top-item">
+    <div class="date dimmed"></div>
+    <div class="time"><span class="sec"></span></div>
+  </div>
+  <div class="top-right top-item">
+    <div class="temp large-weather"></div>
+  </div>
+  </section>
+
+
+
+  <section class="middle">
+<div class="fade-container">
+
+	<div class="cycle-0 fullCalendar-container">
+
+	  <div id="calendar-month"></div>
+	</div>
+
+	<div class="cycle-1 fullCalendar-container">
+	  <div id="calendar-today"></div>
+	</div>
+
+
+	<div class="cycle-2 fullCalendar-container">
+	  <div id="calendar-tomorrow"></div>
+	</div>
+
+	<div class="cycle-3">
+	  <div id="countdown-vacation">
+			<h1>52 days Until....</h1>
+		</div>
+	</div>
+
 
 </div>
 
-<script src="js/jquery.js"></script>
-<script src="js/jquery.feedToJSON.js"></script>
-<script src="js/ical_parser.js"></script>
-<script src="js/moment-with-locales.min.js"></script>
-<script src="js/config.js"></script>
-<script src="js/rrule.js"></script>
-<script src="js/version/version.js" type="text/javascript"></script>
-<script src="js/gcal/gcal.js" type="text/javascript"></script>
-<script src="js/compliments/compliments.js" type="text/javascript"></script>
-<script src="js/weather/weather.js" type="text/javascript"></script>
-<script src="js/time/time.js" type="text/javascript"></script>
-<script src="js/news/news.js" type="text/javascript"></script>
-<script src="js/main.js?nocache=<?php echo md5(microtime()) ?>"></script>
-<!-- <script src="js/socket.io.min.js"></script> -->
+  </section>
+
+
+  <section class="bottom">
+    <div class="bottom-text bottom-item">
+      <div>You look awesome!</div>
+			<button onclick="cycleTo(0);">Calendar</button>
+			<button onclick="cycleTo(1);">Today Agenda</button>
+			<button onclick="cycleTo(2);">Tomorrow Agenda</button>
+			<button onclick="cycleTo(3);">Vacation</button>
+			<button onclick="toggleCycle();">Toggle Cycle</button>
+    </div>
+  </section>
+
+  </main>
+
+
+  <script src="js/lib/jQuery/jquery.js"></script>
+  <!--<script src="js/lib/jquery.feedToJSON.js"></script>-->
+  <!-- <script src="js/ical_parser.js"></script> -->
+  <script src="js/lib/moment/moment-with-locales.min.js"></script>
+	<script src="js/lib/jquery/jquery.matchHeight.js"></script>
+  <script src="js/lib/fullcalendar/fullcalendar.js"></script>
+
+
+	<script src="js/mmlib/config.js"></script>
+  <!--<script src="js/rrule.js"></script>-->
+  <!-- <script src="js/version/version.js" type="text/javascript"></script> -->
+
+
+  <!-- <script src="js/gcal-reminders/gcal-reminders.js" type="text/javascript"></script> -->
+  <!-- <script src="js/countdown/jquery.countdown.js" type="text/javascript"></script> -->
+  <!--<script src="js/countdown/gcal-countdown.js" type="text/javascript"></script>-->
+
+
+  <script src="js/mmlib/weather/weather.js" type="text/javascript"></script>
+  <script src="js/mmlib/time/time.js" type="text/javascript"></script>
+
+  <script src="js/mmlib/main.js?nocache=<?php echo md5(microtime()) ?>"></script>
+
+	<script src="js/custom/fullcalendar.config.js"></script>
+	<script src="js/custom/mirror.cycler.js"></script>
+
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+
+
+	time.init();
+
+
+
+});
+
+
+
+
+
+
+
+</script>
 
 </body>
 </html>

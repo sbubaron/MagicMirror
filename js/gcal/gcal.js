@@ -9,6 +9,12 @@ var calendar = {
 	maximumEntries: config.calendar.maximumEntries || 10
 }
 
+
+
+
+
+
+
 calendar.updateData = function (callback) {
 
 	
@@ -25,19 +31,18 @@ calendar.updateData = function (callback) {
 					
 
 				  $events = data.events;
-				  console.log(data);
+
 
 				  $.each( $events, function( key, val ) {
-				  	console.log(key);
-				  	console.log(val);
 				  	var days = moment(val.start).diff(moment(), 'days');
-				  	console.log(days);
-				  	myList.push({'description':val.summary,'days':days});
+				  	var startDateTime = moment(val.start);
+				  	
+				  	myList.push({'description':val.summary,'days':days,'calendar':val.cssClass, 'start':startDateTime});
 
 				    
 				  });
 
-   
+			myList.sort(SortByDate);   
     	if (callback !== undefined && Object.prototype.toString.call(callback) === '[object Function]') {
 			callback(myList);
 		}
@@ -75,18 +80,80 @@ calendar.updateData = function (callback) {
 
 }
 
+
+function getDateString(dt)
+{
+
+
+	var res = dt.calendar();
+
+	res = res.toLowerCase();
+
+	if(res.indexOf("today") >= 0)
+		return "Today";
+	else if(res.indexOf("tomorrow") >= 0)
+		return "Tomorrow";
+	else if(res.indexOf("monday") >= 0)
+		return "Monday";
+	else if(res.indexOf("tuesday") >= 0)
+		return "Tuesday";
+	else if(res.indexOf("wednesday") >= 0)
+		return "Wednesday";
+	else if(res.indexOf("thursday") >= 0)
+		return "Thursday";
+	else if(res.indexOf("friday") >= 0)
+		return "Friday";
+	else if(res.indexOf("saturday") >= 0)
+		return "Saturday";
+	else if(res.indexOf("sunday") >= 0)
+		return "Sunday";
+	else
+		return "Later...";
+
+}
+
 calendar.updateCalendar = function (eventList) {
 
 	table = $('<table/>').addClass('xsmall').addClass('calendar-table');
 	opacity = 1;
-
+	
+	var curHeading = '';
+	var potentialHeading = '';
 	for (var i in eventList) {
 		var e = eventList[i];
+		potentialHeading = getDateString(e.start);
 
-		var row = $('<tr/>').css('opacity',opacity);
-		row.append($('<td/>').html(e.description).addClass('description'));
-		row.append($('<td/>').html(e.days).addClass('days dimmed'));
-		table.append(row);
+
+
+		if(curHeading != potentialHeading)
+		{
+			var row = $('<tr/>').css('opacity',opacity).addClass('calendar-heading');
+			row.append($('<td/>').html(potentialHeading));
+			row.append($('<td/>').html());
+			row.append($('<td/>').html());
+			table.append(row);
+			curHeading = potentialHeading;
+		}
+		
+			var dateString = '';
+
+			if(curHeading != "Later...")
+			{
+				dateString = e.start.format('h:mm a');
+			}
+			else
+			{
+				dateString = e.start.format('MMM Do h:mm a');	
+			}
+
+			var row = $('<tr/>').css('opacity',opacity).addClass(e.calendar);
+			row.append($('<td/>').html(e.description).addClass('description'));
+			row.append($('<td/>').html(dateString).addClass('cal-dt'));
+			table.append(row);	
+		
+
+
+		
 
 		opacity -= 1 / eventList.length;
 	}

@@ -1,0 +1,33 @@
+- ability to jump to different views
+- ability to control view time per view
+
+
+- show weather hourly forecast
+- show weather week forecast
+
+- put headers on agenda view (Today, tomorrow)
+- put header on month view (Month)
+
+- connect to weight tracking spreadsheet, get values and chart
+-- show last weigh in date, prompt for weigh in if older than 3 days
+
+
+
+- create water tracking sheet
+-- show water consumption yesterday/today/week
+-- prompt for water input nightly
+
+- show reminders
+-- Today, This week, This month
+
+- show countdown
+
+- create birthday display
+
+- pull tweets in by hashtag
+
+- reimplement compliments
+
+- Interesting Facts about today
+
+- Time to work card

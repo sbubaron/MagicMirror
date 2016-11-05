@@ -1,0 +1,276 @@
+
+
+body, html {
+	background: #000;
+	padding: 0;
+	margin: 0;
+	width:100%;
+	height: 100%;
+
+
+	font-family: "HelveticaNeue-Light";
+	letter-spacing: -2px;
+	color: #fff;
+	font-size: 48px;
+	 -webkit-font-smoothing: antialiased;
+   height: 1920px;
+   width: 1080px;
+}
+
+
+*
+{
+  box-sizing: border-box;
+}
+
+main {
+  width: 1080px;
+  height: 1920px;
+  min-height: 1920px;
+  min-width: 1080px;
+  max-width: 1080px;
+}
+
+
+.top
+{
+
+}
+.date {
+  font-size: 30px;
+}
+
+.top-right {
+  text-align: right;
+}
+
+.top-item {
+  width: 50%;
+  padding: 20px 40px 0;
+}
+
+
+
+.cal-panel--content
+{
+	font-size: 75%;
+}
+
+.cal-panel--content-time
+{
+	font-size: 70%;
+}
+
+
+.large-weather {
+	font-size: 2.75em;
+
+
+}
+
+
+
+.time
+{
+  font-size: 2.5em;
+  color: #fff;
+}
+
+.time .sec
+{
+  font-size: 0.4em;
+  top: -1.0em;
+    color: #ccc;
+    padding-left: 5px;
+    position: relative;
+}
+
+
+.clear-night
+{
+  background-image: url('/css/images/rain-day.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.cal-panel
+{
+	color: #fff;
+	border-radius: 25px;
+}
+
+
+	.panel{
+		height: 100%;
+	}
+
+	.fader {
+    position: relative;
+
+
+	}
+
+	.main
+	{
+		margin: 0 auto;
+		width: 100%;
+
+	}
+
+	.fader h2, .cal-panel h2 {
+		font-size: 48px;
+    font-family: "HelveticaNeue-Light";
+		font-weight: normal;
+	}
+
+	.cal-panel ul
+	{
+		margin: 0;
+		font-size: 85%;
+
+	}
+
+	.cal-panel
+	{
+    padding: 30px;
+		color: #000;
+		background-color: rgba(255,255,255, 0.75);
+
+	}
+
+	.cal-panel h2
+	{
+		margin: 0 0 20px 0;
+
+	}
+
+
+  .bottom-item {
+
+
+    width: 90%;
+
+    text-align: center;
+  }
+
+
+
+.glance-cal {
+  display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.glance-cal-item {
+  margin-bottom: 1em;
+  width: 40%;
+}
+
+.top, .bottom {
+  background-color: rgba(0,0,0,0.3);
+}
+
+.middle {
+  background-color: rgba(0,0,0,0.3);
+}
+
+.fullCalendar-container {
+  display: flex;
+justify-content: space-around;
+align-items: center;
+flex-wrap: wrap;
+height: 90%;
+margin: 1.5em 0em
+}
+
+.fc-event-container {
+	letter-spacing: 0;
+	font-size: 0.7em;
+}
+
+
+.fade {position:absolute; top:0; left:0; display:none;}
+.current {display:block;}
+
+.fade-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.fullCalendar-container {
+  margin: 0 1em;
+}
+
+.cal-panel {
+  height: 472px;
+  min-height: 472px;
+  overflow: hidden;
+}
+
+
+.dropbear {
+  display: none;
+}
+
+
+.fc .fc-today {
+  background-color: transparent;
+  color: #33ccff;
+}
+
+.fc .fc-day-number {
+  padding-right: 0.25em;
+	font-size: 0.5em;
+}
+
+
+.fc-title {
+  display: block;
+  white-space: normal;
+}
+
+
+.fc-event {
+
+	font-size: 0.5em;
+  border: 0;
+  margin-bottom: 5px;
+}
+
+.fc-event:hover {
+
+}
+
+
+.fc-today {
+}
+
+.fc-h-event {
+  border: 1px solid $light-gray;
+}
+
+
+.fc-agendaDay-view .fc-axis {
+	font-size: 0.8em;
+}
+
+.fc-agendaDay-view {
+	font-size: 17px;
+	letter-spacing: 0px;
+}
+
+.fc-agendaDay-view .fc-event-container {
+
+
+}
+
+.fc-agendaDay-view .fc-event {
+	font-size: 1.5em;
+}
