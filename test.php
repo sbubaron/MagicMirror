@@ -30,25 +30,11 @@
   <section class="middle">
 <div class="fade-container">
 
-	<div class="cycle-0 fullCalendar-container">
-
-	  <div id="calendar-month"></div>
-	</div>
-
+	
 	<div class="cycle-1 fullCalendar-container">
 	  <div id="calendar-today"></div>
 	</div>
 
-
-	<div class="cycle-2 fullCalendar-container">
-	  <div id="calendar-tomorrow"></div>
-	</div>
-
-	<div class="cycle-3">
-	  <div id="countdown-vacation">
-			<h1>52 days Until....</h1>
-		</div>
-	</div>
 
 
 </div>
@@ -59,13 +45,6 @@
   <section class="bottom">
     <div class="bottom-text bottom-item">
       <div>You look awesome!</div>
-      <div style="display: none;">
-			<button onclick="cycleTo(0);">Calendar</button>
-			<button onclick="cycleTo(1);">Today Agenda</button>
-			<button onclick="cycleTo(2);">Tomorrow Agenda</button>
-			<button onclick="cycleTo(3);">Vacation</button>
-			<button onclick="toggleCycle();">Toggle Cycle</button>
-      </div>
     </div>
   </section>
 
@@ -96,7 +75,7 @@
   <script src="js/mmlib/main.js?nocache=<?php echo md5(microtime()) ?>"></script>
 
 	<script src="js/custom/fullcalendar.config.js"></script>
-	<script src="js/custom/mirror.cycler.js"></script>
+	
 
 <script type="text/javascript">
 

@@ -1,13 +1,13 @@
 <?php
 header('Content-type: application/json');
 
-require __DIR__ . '/lib/google-api-php-client-1.1.6/src/Google/autoload.php';
+require '../lib/google-api-php-client-1.1.6/src/Google/autoload.php';
 
 define('APPLICATION_NAME', 'MagicMirror');
-define('CREDENTIALS_PLANETRICH_PATH', '/Users/rich/.credentials/gcal-planetrich-access-token.json');
-define('CREDENTIALS_SBU_PATH', '/Users/rich/.credentials/gcal-sbu-access-token.json');
+define('CREDENTIALS_PLANETRICH_PATH', '../.credentials/gcal-planetrich-access-token.json');
+define('CREDENTIALS_SBU_PATH', '../.credentials/gcal-sbu-access-token.json');
 
-define('CLIENT_SECRET_PATH', __DIR__ . '/.credentials/client_secret.json');
+define('CLIENT_SECRET_PATH',  '../.credentials/client_secret.json');
 define('SCOPES', implode(' ', array(
   Google_Service_Calendar::CALENDAR_READONLY)
 ));

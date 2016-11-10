@@ -11,7 +11,7 @@ $('#calendar-month').fullCalendar({
     eventSources: [
 
      {
-         url: 'http://magicmirror.php-apps.localhost.stonybrook.edu/api/gcal.php' // use the `url` property
+         url: '/api/gcal.php' // use the `url` property
      }
 
 
@@ -24,13 +24,16 @@ $('#calendar-today').fullCalendar({
       right: false,
       left: false
     },
+    
+    maxTime: "24:00:00",
+    minTime: "6:00:00",
     height: 'parent',
     defaultView: 'agendaDay',
 
     eventSources: [
 
      {
-         url: 'http://magicmirror.php-apps.localhost.stonybrook.edu/api/gcal.php' // use the `url` property
+         url: '/api/gcal.php' // use the `url` property
      }
 
 
@@ -45,13 +48,15 @@ $('#calendar-tomorrow').fullCalendar({
       left: false
     },
 
+    maxTime: "24:00:00",
+    minTime: "6:00:00",
     height: 'parent',
     defaultView: 'agendaDay',
     defaultDate: moment().add(1, 'days'),
     eventSources: [
 
      {
-         url: 'http://magicmirror.php-apps.localhost.stonybrook.edu/api/gcal.php' // use the `url` property
+         url: '/api/gcal.php' // use the `url` property
      }
 
 

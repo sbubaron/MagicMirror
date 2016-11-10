@@ -88,7 +88,7 @@ main {
 
 .clear-night
 {
-  background-image: url('/css/images/rain-day.jpeg');
+  background-image: url('/css/images/textures/bg2.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -262,7 +262,7 @@ margin: 1.5em 0em
 }
 
 .fc-agendaDay-view {
-	font-size: 17px;
+	font-size: 24px;
 	letter-spacing: 0px;
 }
 

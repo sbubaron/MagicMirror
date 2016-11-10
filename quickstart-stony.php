@@ -2,9 +2,9 @@
 require __DIR__ . '/lib/google-api-php-client-1.1.6/src/Google/autoload.php';
 
 define('APPLICATION_NAME', 'MagicMirror');
-define('CREDENTIALS_PATH', '~/.credentials/gcal-sbu-access-token.json');
+define('CREDENTIALS_PATH', __DIR__ . '/.credentials/gcal-sbu-access-token.json');
 define('CLIENT_SECRET_PATH', __DIR__ . '/.credentials/client_secret.json');
-define('REFRESH_PATH', '~/.credentials/gcal-sbu-refresh-token.json');
+define('REFRESH_PATH', __DIR__ . '/.credentials/gcal-sbu-refresh-token.json');
 define('SCOPES', implode(' ', array(
   Google_Service_Calendar::CALENDAR_READONLY)
 ));
