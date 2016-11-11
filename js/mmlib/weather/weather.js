@@ -161,6 +161,9 @@ weather.init = function () {
 		this.params.cnt = 5;
 	}
 
+	this.updateCurrentWeather();
+	this.updateWeatherForecast();
+
 	this.intervalId = setInterval(function () {
 		this.updateCurrentWeather();
 		this.updateWeatherForecast();

@@ -21,17 +21,17 @@
       <div class="time"><span class="sec"></span></div>
     </div>
     <div class="top-right top-item">
-      <div class="cycle-slideshow" data-cycle-fx="scrollHorz" data-cycle-speed="1000" data-cycle-slides="> div">
+      <div class="cycle-slideshow temp-slideshow" data-cycle-fx="scrollHorz" data-cycle-speed="400" data-cycle-timeout="10000" data-cycle-slides="> div">
         <div>
-          <div class="date-temp dimmed">Currently</div>
+          <div class="temp-date dimmed">Currently</div>
           <div class="temp large-weather"></div>
         </div>
         <div>
-          <div class="date-temp dimmed">Tomorrow morning</div>
+          <div class="temp-date dimmed">Tomorrow morning</div>
           <div class="temp large-weather"></div>
         </div>
         <div>
-          <div class="date-temp dimmed">Tomorrow</div>
+          <div class="temp-date dimmed">Tomorrow</div>
           <div class="temp large-weather"></div>
         </div>
       </div>
@@ -41,7 +41,7 @@
 
 
   <section class="middle">
-    <div class="fade-container cycle-slideshow" data-cycle-fx="scrollHorz" data-cycle-speed="200" data-cycle-slides="> div">
+    <div class="fade-container cycle-slideshow" data-cycle-fx="scrollHorz" data-cycle-pause-on-hover="true" data-cycle-speed="200" data-cycle-slides="> div">
 
       <div class="fullCalendar-container">
         <div id="calendar-tomorrow"></div>

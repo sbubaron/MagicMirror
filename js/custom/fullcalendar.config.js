@@ -39,7 +39,13 @@ $('#calendar-month').fullCalendar({
      }
 
 
-    ]
+    ],
+
+    eventRender: function(event, element, view)
+    {
+        
+        //if(event.start.month() !== view.start.month()) { return false; }
+    }   
 });
 
 $('#calendar-today').fullCalendar({
