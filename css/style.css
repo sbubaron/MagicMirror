@@ -36,7 +36,7 @@ main {
 {
 
 }
-.date {
+.date, .temp-date {
   font-size: 30px;
 }
 

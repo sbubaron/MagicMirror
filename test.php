@@ -9,7 +9,11 @@
 
 	<meta name="google" value="notranslate" />
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-
+  <style>
+    .fc-content .fc-time {
+      display: none;
+    }
+  </style>
 </head>
 <body>
 
@@ -21,6 +25,7 @@
     <div class="time"><span class="sec"></span></div>
   </div>
   <div class="top-right top-item">
+    <div class="temp-date dimmed">Currently</div>
     <div class="temp large-weather"></div>
   </div>
   </section>
@@ -32,7 +37,7 @@
 
 	
 	<div class="cycle-1 fullCalendar-container">
-	  <div id="calendar-today"></div>
+	  <div id="calendar-tomorrow"></div>
 	</div>
 
 
@@ -74,7 +79,6 @@
 
   <script src="js/mmlib/main.js?nocache=<?php echo md5(microtime()) ?>"></script>
 
-	<script src="js/custom/fullcalendar.config.js"></script>
 	
 
 <script type="text/javascript">
@@ -89,6 +93,28 @@ $(document).ready(function() {
 
 });
 
+$('#calendar-tomorrow').fullCalendar({
+
+    header: {
+      center: false,
+      right: false,
+      left: false
+    },
+
+    maxTime: "24:00:00",
+    minTime: "6:00:00",
+    height: 'parent',
+    defaultView: 'agendaDay',
+    defaultDate: moment().add(1, 'days'),
+    eventSources: [
+
+     {
+         url: '/api/gcal.php' // use the `url` property
+     }
+
+
+    ]
+});
 
 
 

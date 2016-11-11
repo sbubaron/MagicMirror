@@ -16,42 +16,52 @@
   <main class="container clear-night">
 
   <section class="top">
-  <div class="top-left top-item">
-    <div class="date dimmed"></div>
-    <div class="time"><span class="sec"></span></div>
-  </div>
-  <div class="top-right top-item">
-    <div class="temp large-weather"></div>
-  </div>
+    <div class="top-left top-item">
+      <div class="date dimmed"></div>
+      <div class="time"><span class="sec"></span></div>
+    </div>
+    <div class="top-right top-item">
+      <div class="cycle-slideshow" data-cycle-fx="scrollHorz" data-cycle-speed="1000" data-cycle-slides="> div">
+        <div>
+          <div class="date-temp dimmed">Currently</div>
+          <div class="temp large-weather"></div>
+        </div>
+        <div>
+          <div class="date-temp dimmed">Tomorrow morning</div>
+          <div class="temp large-weather"></div>
+        </div>
+        <div>
+          <div class="date-temp dimmed">Tomorrow</div>
+          <div class="temp large-weather"></div>
+        </div>
+      </div>
+    </div>
   </section>
 
 
 
   <section class="middle">
-<div class="fade-container">
+    <div class="fade-container cycle-slideshow" data-cycle-fx="scrollHorz" data-cycle-speed="200" data-cycle-slides="> div">
 
-	<div class="cycle-0 fullCalendar-container">
+      <div class="fullCalendar-container">
+        <div id="calendar-tomorrow"></div>
+      </div>
 
-	  <div id="calendar-month"></div>
-	</div>
+      <div class="fullCalendar-container">
+        <div id="calendar-month"></div>
+      </div>
 
-	<div class="cycle-1 fullCalendar-container">
-	  <div id="calendar-today"></div>
-	</div>
+      <div class="fullCalendar-container">
+        <div id="calendar-today"></div>
+      </div>
 
+      <div class="">
+        <div id="countdown-vacation">
+          <h1>52 days Until....</h1>
+        </div>
+      </div>
 
-	<div class="cycle-2 fullCalendar-container">
-	  <div id="calendar-tomorrow"></div>
-	</div>
-
-	<div class="cycle-3">
-	  <div id="countdown-vacation">
-			<h1>52 days Until....</h1>
-		</div>
-	</div>
-
-
-</div>
+    </div>
 
   </section>
 
@@ -89,6 +99,7 @@
   <!-- <script src="js/countdown/jquery.countdown.js" type="text/javascript"></script> -->
   <!--<script src="js/countdown/gcal-countdown.js" type="text/javascript"></script>-->
 
+  <script src="js/lib/cycle2/cycle2.js"></script>
 
   <script src="js/mmlib/weather/weather.js" type="text/javascript"></script>
   <script src="js/mmlib/time/time.js" type="text/javascript"></script>
@@ -96,7 +107,7 @@
   <script src="js/mmlib/main.js?nocache=<?php echo md5(microtime()) ?>"></script>
 
 	<script src="js/custom/fullcalendar.config.js"></script>
-	<script src="js/custom/mirror.cycler.js"></script>
+	<!--<script src="js/custom/mirror.cycler.js"></script>-->
 
 <script type="text/javascript">
 
