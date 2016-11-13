@@ -70,4 +70,11 @@ $('#calendar-today').fullCalendar({
     ]
 });
 
+function refreshCalendars() {
+    console.log("refreshing cals");
+    $('#calendar-today').fullCalendar( 'refetchEvents' );
+    $('#calendar-tomorrow').fullCalendar( 'refetchEvents' );
+    $('#calendar-month').fullCalendar( 'refetchEvents' );
 
+    setTimeout(refreshCalendars, 120000);
+}

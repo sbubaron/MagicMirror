@@ -55,7 +55,14 @@ main {
   padding: 20px 40px 0;
 }
 
+.forecast-table {
+  float: right;
+  font-size: 42px;
+}
 
+.forecast-table td {
+      padding: 0px 12px;
+}
 
 .cal-panel--content
 {
@@ -182,7 +189,7 @@ main {
   background-color: rgba(0,0,0,0.3);
 }
 
-.fullCalendar-container {
+.fullCalendar-container, .item-container {
   display: flex;
 justify-content: space-around;
 align-items: center;
@@ -191,6 +198,14 @@ height: 90%;
 margin: 1.5em 0em
 }
 
+.item-wrap {
+  height: 90%;
+  width:100%; 
+}
+
+#clock {
+  font-size: 2.2em;
+}
 .fc-event-container {
 	letter-spacing: 0;
 	font-size: 0.7em;

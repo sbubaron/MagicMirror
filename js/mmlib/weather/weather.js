@@ -26,7 +26,7 @@ var weather = {
 	windSunLocation: '.windsun',
 	forecastLocation: '.forecast',
 	apiVersion: '2.5',
-	apiBase: 'http://api.openweathermap.org/data/',
+	apiBase: 'http://api.openweathermap.org/data',
 	weatherEndpoint: 'weather',
 	forecastEndpoint: 'forecast/daily',
 	updateInterval: config.weather.interval || 120000,
@@ -66,13 +66,17 @@ weather.ms2Beaufort = function(ms) {
  */
 weather.updateCurrentWeather = function () {
 	console.log("Getting weather");
+
+	console.log(weather.apiBase + '/' + weather.apiVersion + '/' + weather.weatherEndpoint);
+
 	$.ajax({
 		type: 'GET',
 		url: weather.apiBase + '/' + weather.apiVersion + '/' + weather.weatherEndpoint,
 		dataType: 'json',
 		data: weather.params,
 		success: function (data) {
-
+			console.log(data);
+			
 			var _temperature = this.roundValue(data.main.temp),
 				_temperatureMin = this.roundValue(data.main.temp_min),
 				_temperatureMax = this.roundValue(data.main.temp_max),
@@ -110,21 +114,24 @@ weather.updateCurrentWeather = function () {
  * Updates the 5 Day Forecast from the OpenWeatherMap API
  */
 weather.updateWeatherForecast = function () {
-
+console.log("getting forecast");
+console.log(weather.apiBase + '/' + weather.apiVersion + '/' + weather.forecastEndpoint);
 	$.ajax({
 		type: 'GET',
 		url: weather.apiBase + '/' + weather.apiVersion + '/' + weather.forecastEndpoint,
 		data: weather.params,
 		success: function (data) {
-
+			console.log(data);
 			var _opacity = 1,
 				_forecastHtml = '';
 
 			_forecastHtml += '<table class="forecast-table">';
 
-			for (var i = 0, count = data.list.length; i < count; i++) {
-
+			//for (var i = 0, count = data.list.length; i < count; i++) {
+			for (var i = 0, count = data.list.length; i < 3; i++) {
 				var _forecast = data.list[i];
+
+				console.log(moment(_forecast.dt, 'X'));
 
 				_forecastHtml += '<tr style="opacity:' + _opacity + '">';
 

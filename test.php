@@ -24,10 +24,15 @@
     <div class="date dimmed"></div>
     <div class="time"><span class="sec"></span></div>
   </div>
-  <div class="top-right top-item">
-    <div class="temp-date dimmed">Currently</div>
-    <div class="temp large-weather"></div>
-  </div>
+ <div class="top-right top-item">
+      <div class="cycle-slideshowx temp-slideshow" data-cycle-fx="scrollHorz" data-cycle-speed="400" data-cycle-timeout="10000" data-cycle-slides="> div">
+        
+        <div>
+          <div class="temp forecast"></div>
+        </div>
+        
+      </div>
+    </div>
   </section>
 
 
@@ -63,6 +68,8 @@
 	<script src="js/lib/jquery/jquery.matchHeight.js"></script>
   <script src="js/lib/fullcalendar/fullcalendar.js"></script>
 
+
+  <script src="js/lib/cycle2/cycle2.js"></script>
 
 	<script src="js/mmlib/config.js"></script>
   <!--<script src="js/rrule.js"></script>-->
