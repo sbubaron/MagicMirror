@@ -128,10 +128,10 @@ $(document).ready(function() {
 });
 
 $( '#main-slideshow' ).on( 'cycle-before', function(event, optionHash, outgoingSlideEl, incomingSlideEl, forwardFlag) {
-    console.log("before");
     
-    console.log(event);
-    console.log(incomingSlideEl.id);
+    
+    //console.log(event);
+    //console.log(incomingSlideEl.id);
 
     if(incomingSlideEl.id == "time-wrap") {
       $(".top-left").fadeOut();
@@ -142,18 +142,19 @@ $( '#main-slideshow' ).on( 'cycle-before', function(event, optionHash, outgoingS
       $(".top-left").fadeIn();
       $(".top-right").fadeIn();
     }
-    console.log(optionHash);
+   // console.log(optionHash);
     // your event handler code here
     // argument opts is the slideshow's option hash
 });
 
 $('#main-slideshow').on('cycle-after', function(event, optionHash, outgoingSlideEl, incomingSlideEl, forwardFlag) {
         
-        console.log(incomingSlideEl.id);
+      //  console.log(incomingSlideEl.id);
 
         if(incomingSlideEl.id == "time-wrap") {
           $('#main-slideshow').cycle('pause');
-          setTimeout(alarmTimeout, 15000);
+          checkAlarmState();
+          setTimeout(alarmTimeout, 240000);
         }
       
       
@@ -162,15 +163,42 @@ $('#main-slideshow').on('cycle-after', function(event, optionHash, outgoingSlide
 
 function alarmTimeout() {
   var ss = $('#main-slideshow');
-  console.log(ss);
+  //console.log(ss);
   
-  console.log(ss.data("cycle.opts").currSlide);
+  //console.log(ss.data("cycle.opts").currSlide);
   if(ss.data("cycle.opts").currSlide == 4 && ss.data("cycle.opts").paused) {
     player.stopVideo();
     ss.cycle('resume');
   }
 }
 
+
+function checkAlarmState() {
+
+  var ss = $('#main-slideshow');
+  if(ss.data("cycle.opts").currSlide == 4 && ss.data("cycle.opts").paused) {
+    console.log("checking alarm status");
+    $.ajax({
+		type: 'GET',
+    cache: false,
+		url: '/json-tests/alarm.json',
+		data: weather.params,
+		success: function (data) {
+			console.log(data);
+      if(!data.state) {
+        console.log("stop alarm");
+        alarmTimeout();
+      }
+      else {
+        console.log("continue playing");
+        setTimeout(checkAlarmState, 5000);
+      }
+    }
+    });
+
+    
+  }
+}
 
 
 

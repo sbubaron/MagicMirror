@@ -13,6 +13,10 @@
           height: '390',
           width: '640',
           videoId: 'x-64CaD8GXw',
+          playerVars: {
+              loop: 1,
+              playlist: 'yn7DavxmzkA, Yg_rf2d894k'
+          },
           events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
