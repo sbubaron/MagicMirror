@@ -152,6 +152,7 @@ $('#main-slideshow').on('cycle-after', function(event, optionHash, outgoingSlide
       //  console.log(incomingSlideEl.id);
 
         if(incomingSlideEl.id == "time-wrap") {
+          document.alarmStart = moment();
           $('#main-slideshow').cycle('pause');
           checkAlarmState();
           setTimeout(alarmTimeout, 240000);
@@ -181,13 +182,24 @@ function checkAlarmState() {
     $.ajax({
 		type: 'GET',
     cache: false,
-		url: '/json-tests/alarm.json',
+		url: '/json-tests/test.json',
 		data: weather.params,
 		success: function (data) {
 			console.log(data);
-      if(!data.state) {
-        console.log("stop alarm");
-        alarmTimeout();
+      if(data.date) {
+        var datePress = moment(data.date);
+        console.log(datePress);
+        console.log(document.alarmStart);
+
+        if(datePress > document.alarmStart) {
+          console.log("stop alarm");
+          alarmTimeout();
+        }
+        else {
+          console.log("continue playing");
+          setTimeout(checkAlarmState, 5000);
+        }
+        
       }
       else {
         console.log("continue playing");
