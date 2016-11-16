@@ -1,3 +1,4 @@
 js/config.js
 .credentials
 .DS_Store
+json-tests/test.json
