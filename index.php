@@ -57,12 +57,12 @@
         </div>
       </div>
 
-      <div id="time-wrap" class="item-wrap">
+  <!--    <div id="time-wrap" class="item-wrap">
         <div id="clock" class="item-container">
           <div class="time"><span class="sec"></span></div>
           <div id="player"></div>
         </div>
-      </div>
+      </div>-->
 
     </div>
 
