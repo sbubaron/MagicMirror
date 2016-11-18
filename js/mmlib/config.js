@@ -14,6 +14,15 @@ var config = {
             APPID: '3efff6d147054c27a15320da0731d70a'
         }
     },
+    mainController: {
+        interval: 3000
+    },
+    fullCalendars: {
+        interval: 120000,
+    },
+    countdown: {
+
+    },
     compliments: {
         interval: 30000,
         fadeInterval: 4000,

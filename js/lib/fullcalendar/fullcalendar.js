@@ -11017,6 +11017,14 @@ function EventManager() { // assumed to be a calendar
 
 		var events = source.events;
 		if (events) {
+
+			if(rangeStart === null) {
+				rangeStart = moment();
+			}
+
+			if(rangeEnd === null) {
+				rangeEnd = moment();
+			}
 			if ($.isFunction(events)) {
 				t.pushLoading();
 				events.call(

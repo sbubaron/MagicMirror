@@ -66,55 +66,6 @@ function getPlanetRichClient() {
 }
 
 
-/**
- * Returns an authorized API client.
- * @return Google_Client the authorized client object
- */
-function getSBUClient() {
-
-//echo "getting client";
-
-  $client = new Google_Client();
-  $client->setApplicationName(APPLICATION_NAME);
-  $client->setScopes(SCOPES);
-  $client->setAuthConfigFile(CLIENT_SECRET_PATH);
-
- // echo "setting auth config file";
-  $client->setAccessType('offline');
-
-  // Load previously authorized credentials from a file.
-  $credentialsPath = expandHomeDirectory(CREDENTIALS_SBU_PATH);
- // echo "cred path " . $credentialsPath;
-  if (file_exists($credentialsPath)) {
-
-    $accessToken = file_get_contents($credentialsPath);
-  //  echo "access token got";
-  } else {
-
-    // Exchange authorization code for an access token.
-    $accessToken = $client->authenticate($authCode);
-
-    // Store the credentials to disk.
-    if(!file_exists(dirname($credentialsPath))) {
-      mkdir(dirname($credentialsPath), 0700, true);
-    }
-
-    file_put_contents($credentialsPath, $accessToken);
-
-  }
-
-//  echo $accessToken;
-
-  $client->setAccessToken($accessToken);
-
-  // Refresh the token if it's expired.
-  if ($client->isAccessTokenExpired()) {
-
-    $client->refreshToken($client->getRefreshToken());
-    file_put_contents($credentialsPath, $client->getAccessToken());
-  }
-  return $client;
-}
 
 /**
  * Expands the home directory alias '~' to the full path.
@@ -199,31 +150,16 @@ $planetrichClient = getPlanetRichClient();
 $service = new Google_Service_Calendar($planetrichClient);
 
 $minDate = new DateTime();
-$minDate->modify('- 32 days');
+//$minDate->modify('- 32 days');
 $minDate->setTime(0,0);
 
 $maxDate = new DateTime();
-$maxDate->modify('+ 32 days');
-
-
-// Print the next 10 events on the user's calendar.
-$calendarId = 'primary';
-$optParams = array(
-  'maxResults' => 100,
-  'orderBy' => 'startTime',
-  'singleEvents' => TRUE,
-  'timeMin' => $minDate->format(DateTime::ISO8601),
-  'timeMax' => $maxDate->format(DateTime::ISO8601),
-);
-
-$results = $service->events->listEvents($calendarId, $optParams);
-
-$jsonRes = array_merge($jsonRes, parseGoogleCalendar($results, 'planetrich-primary planetrich'));
+$maxDate->modify('+ 365 days');
 
 
 
 // Print the next 10 events on the user's calendar.
-$calendarId = '#contacts@group.v.calendar.google.com';
+$calendarId = 'planetrich.com_t4ddl4ag6m1nds59v0essgqak8@group.calendar.google.com';
 
 
 
@@ -238,69 +174,7 @@ $optParams = array(
 
 $results = $service->events->listEvents($calendarId, $optParams);
 
-$jsonRes = array_merge($jsonRes, parseGoogleCalendar($results, 'planetrich-birthdays planetrich'));
-
-
-
-// Print the next 10 events on the user's calendar.
-$calendarId = 'planetrich.com_2tdev4ms51p3nkho7ef22fiqv0@group.calendar.google.com';
-
-$maxDate = new DateTime();
-$maxDate->modify('+ 14 days');
-
-$optParams = array(
-  'maxResults' => 10,
-  'orderBy' => 'startTime',
-  'singleEvents' => TRUE,
-  'timeMin' => $minDate->format(DateTime::ISO8601),
-  'timeMax' => $maxDate->format(DateTime::ISO8601),
-
-);
-
-$results = $service->events->listEvents($calendarId, $optParams);
-
-$jsonRes = array_merge($jsonRes, parseGoogleCalendar($results, 'planetrich-bills planetrich'));
-
-
-
-$sbuClient = getSBUClient();
-$service = new Google_Service_Calendar($sbuClient);
-
-// Print the next 10 events on the user's calendar.
-$calendarId = 'primary';
-$optParams = array(
-  'maxResults' => 10,
-  'orderBy' => 'startTime',
-  'singleEvents' => TRUE,
-  'timeMin' => $minDate->format(DateTime::ISO8601),
-  'timeMax' => $maxDate->format(DateTime::ISO8601),
-);
-
-$results = $service->events->listEvents($calendarId, $optParams);
-
-$jsonRes = array_merge($jsonRes, parseGoogleCalendar($results, 'sbu-primary sbu'));
-
-$calendarId = 'en.usa#holiday@group.v.calendar.google.com';
-
-$maxDate = new DateTime();
-$maxDate->modify('+ 21 days');
-
-
-$optParams = array(
-  'maxResults' => 10,
-  'orderBy' => 'startTime',
-  'singleEvents' => TRUE,
-  'timeMin' => $minDate->format(DateTime::ISO8601),
-  'timeMax' => $maxDate->format(DateTime::ISO8601),
-
-);
-
-$results = $service->events->listEvents($calendarId, $optParams);
-
-$jsonRes = array_merge($jsonRes, parseGoogleCalendar($results, 'sbu-holidays sbu'));
-
-
-
+$jsonRes = array_merge($jsonRes, parseGoogleCalendar($results, 'planetrich-countdown planetrich'));
 
 
 

@@ -65,48 +65,51 @@ weather.ms2Beaufort = function(ms) {
  * Retrieves the current temperature and weather patter from the OpenWeatherMap API
  */
 weather.updateCurrentWeather = function () {
-	console.log("Getting weather");
+	
+	if(mainController.state === "running") {
 
-	console.log(weather.apiBase + '/' + weather.apiVersion + '/' + weather.weatherEndpoint);
+		console.log("Getting weather");
+	//console.log(weather.apiBase + '/' + weather.apiVersion + '/' + weather.weatherEndpoint);
 
-	$.ajax({
-		type: 'GET',
-		url: weather.apiBase + '/' + weather.apiVersion + '/' + weather.weatherEndpoint,
-		dataType: 'json',
-		data: weather.params,
-		success: function (data) {
-			console.log(data);
-			
-			var _temperature = this.roundValue(data.main.temp),
-				_temperatureMin = this.roundValue(data.main.temp_min),
-				_temperatureMax = this.roundValue(data.main.temp_max),
-				_wind = this.roundValue(data.wind.speed),
-				_iconClass = this.iconTable[data.weather[0].icon];
+		$.ajax({
+			type: 'GET',
+			url: weather.apiBase + '/' + weather.apiVersion + '/' + weather.weatherEndpoint,
+			dataType: 'json',
+			data: weather.params,
+			success: function (data) {
+		//		console.log(data);
+				
+				var _temperature = this.roundValue(data.main.temp),
+					_temperatureMin = this.roundValue(data.main.temp_min),
+					_temperatureMax = this.roundValue(data.main.temp_max),
+					_wind = this.roundValue(data.wind.speed),
+					_iconClass = this.iconTable[data.weather[0].icon];
 
-			var _icon = '<span class="icon ' + _iconClass + ' dimmed wi"></span>';
+				var _icon = '<span class="icon ' + _iconClass + ' dimmed wi"></span>';
 
-			var _newTempHtml = _icon + ' ' + _temperature + '&deg;';
+				var _newTempHtml = _icon + ' ' + _temperature + '&deg;';
 
-			$(this.temperatureLocation).updateWithText(_newTempHtml, this.fadeInterval);
+				$(this.temperatureLocation).updateWithText(_newTempHtml, this.fadeInterval);
 
-			var _now = moment().format('hh:mm a'),
-				_sunrise = moment(data.sys.sunrise*1000).format('hh:mm a'),
-				_sunset = moment(data.sys.sunset*1000).format('hh:mm a');
+				var _now = moment().format('hh:mm a'),
+					_sunrise = moment(data.sys.sunrise*1000).format('hh:mm a'),
+					_sunset = moment(data.sys.sunset*1000).format('hh:mm a');
 
-			var _newWindHtml = '<span class="wi wi-strong-wind xdimmed"></span> ' + this.ms2Beaufort(_wind),
-				_newSunHtml = '<span class="wi wi-sunrise xdimmed"></span> ' + _sunrise;
+				var _newWindHtml = '<span class="wi wi-strong-wind xdimmed"></span> ' + this.ms2Beaufort(_wind),
+					_newSunHtml = '<span class="wi wi-sunrise xdimmed"></span> ' + _sunrise;
 
-			if (_sunrise < _now && _sunset > _now) {
-				_newSunHtml = '<span class="wi wi-sunset xdimmed"></span> ' + _sunset;
+				if (_sunrise < _now && _sunset > _now) {
+					_newSunHtml = '<span class="wi wi-sunset xdimmed"></span> ' + _sunset;
+				}
+
+				$(this.windSunLocation).updateWithText(_newWindHtml + ' ' + _newSunHtml, this.fadeInterval);
+
+			}.bind(this),
+			error: function () {
+
 			}
-
-			$(this.windSunLocation).updateWithText(_newWindHtml + ' ' + _newSunHtml, this.fadeInterval);
-
-		}.bind(this),
-		error: function () {
-
-		}
-	});
+		});
+	}
 
 }
 
@@ -114,48 +117,50 @@ weather.updateCurrentWeather = function () {
  * Updates the 5 Day Forecast from the OpenWeatherMap API
  */
 weather.updateWeatherForecast = function () {
-console.log("getting forecast");
-console.log(weather.apiBase + '/' + weather.apiVersion + '/' + weather.forecastEndpoint);
-	$.ajax({
-		type: 'GET',
-		url: weather.apiBase + '/' + weather.apiVersion + '/' + weather.forecastEndpoint,
-		data: weather.params,
-		success: function (data) {
-			console.log(data);
-			var _opacity = 1,
-				_forecastHtml = '';
+	console.log(mainController);
+	if(mainController.state === "running") {
+		console.log("getting forecast");
+		//console.log(weather.apiBase + '/' + weather.apiVersion + '/' + weather.forecastEndpoint);
+			$.ajax({
+				type: 'GET',
+				url: weather.apiBase + '/' + weather.apiVersion + '/' + weather.forecastEndpoint,
+				data: weather.params,
+				success: function (data) {
+					//console.log(data);
+					var _opacity = 1,
+						_forecastHtml = '';
 
-			_forecastHtml += '<table class="forecast-table">';
+					_forecastHtml += '<table class="forecast-table">';
 
-			//for (var i = 0, count = data.list.length; i < count; i++) {
-			for (var i = 0, count = data.list.length; i < 3; i++) {
-				var _forecast = data.list[i];
+					//for (var i = 0, count = data.list.length; i < count; i++) {
+					for (var i = 0, count = data.list.length; i < 3; i++) {
+						var _forecast = data.list[i];
 
-				console.log(moment(_forecast.dt, 'X'));
+					//	console.log(moment(_forecast.dt, 'X'));
 
-				_forecastHtml += '<tr style="opacity:' + _opacity + '">';
+						_forecastHtml += '<tr style="opacity:' + _opacity + '">';
 
-				_forecastHtml += '<td class="day">' + moment(_forecast.dt, 'X').format('ddd') + '</td>';
-				_forecastHtml += '<td class="icon-small ' + this.iconTable[_forecast.weather[0].icon] + '"></td>';
-				_forecastHtml += '<td class="temp-max">' + this.roundValue(_forecast.temp.max) + '</td>';
-				_forecastHtml += '<td class="temp-min">' + this.roundValue(_forecast.temp.min) + '</td>';
+						_forecastHtml += '<td class="day">' + moment(_forecast.dt, 'X').format('ddd') + '</td>';
+						_forecastHtml += '<td class="icon-small ' + this.iconTable[_forecast.weather[0].icon] + '"></td>';
+						_forecastHtml += '<td class="temp-max">' + this.roundValue(_forecast.temp.max) + '</td>';
+						_forecastHtml += '<td class="temp-min">' + this.roundValue(_forecast.temp.min) + '</td>';
 
-				_forecastHtml += '</tr>';
+						_forecastHtml += '</tr>';
 
-				_opacity -= 0.155;
+						_opacity -= 0.155;
 
-			}
+					}
 
-			_forecastHtml += '</table>';
+					_forecastHtml += '</table>';
 
-			$(this.forecastLocation).updateWithText(_forecastHtml, this.fadeInterval);
+					$(this.forecastLocation).updateWithText(_forecastHtml, this.fadeInterval);
 
-		}.bind(this),
-		error: function () {
+				}.bind(this),
+				error: function () {
 
-		}
-	});
-
+				}
+			});
+	}
 }
 
 weather.init = function () {

@@ -82,9 +82,11 @@ jQuery(document).ready(function($) {
 	// 		$('.lower-third').fadeIn(2000);
 	// 	}
 	// });
+	mainController.init();
 
 
 	time.init();
+	fullCalendars.init();
 
 //	calendar.init();
 
@@ -95,6 +97,9 @@ jQuery(document).ready(function($) {
 	//compliments.init();
 
 	weather.init();
+
+	countdown.init();
+	
 
 
 });

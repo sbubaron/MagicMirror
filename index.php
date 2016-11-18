@@ -37,8 +37,19 @@
 
 
   <section class="middle">
-    <div id="main-slideshow" class="fade-container cycle-slideshow" data-cycle-fx="scrollHorz" data-cycle-pause-on-hover="true" data-cycle-speed="200" data-cycle-slides="> div">
+    <div id="main-slideshow" class="fade-container cycle-slideshow" data-cycle-fx="scrollHorz" data-cycle-pause-on-hover="false" data-cycle-speed="200" data-cycle-slides="> div">
 
+      <div id="loading-wrap" class="item-wrap">
+        <div id="loading" class="item-container">
+          <h1>Loading.....</h1>
+        </div>
+      </div>
+    
+
+      <div id="countdown-wrap" class="item-wrap">
+        <div id="countdown" class="countdown item-container">
+        </div>
+      </div>
       <div id="calendar-tomorrow-wrap" class="fullCalendar-container">
         <div id="calendar-tomorrow"></div>
       </div>
@@ -51,11 +62,11 @@
         <div id="calendar-today"></div>
       </div>
 
-      <div id="countdown-wrap" class="item-wrap">
+   <!--   <div id="countdown-wrap" class="item-wrap">
         <div id="countdown-vacation" class="item-container">
           <h1>52 days Until....</h1>
         </div>
-      </div>
+      </div>-->
 
   <!--    <div id="time-wrap" class="item-wrap">
         <div id="clock" class="item-container">
@@ -94,6 +105,8 @@
 
 
 	<script src="js/mmlib/config.js"></script>
+
+  <script src="js/custom/controller.js"></script>
   <!--<script src="js/rrule.js"></script>-->
   <!-- <script src="js/version/version.js" type="text/javascript"></script> -->
 
@@ -110,113 +123,9 @@
   <script src="js/mmlib/main.js?nocache=<?php echo md5(microtime()) ?>"></script>
 
 	<script src="js/custom/fullcalendar.config.js"></script>
+  <script src="js/custom/countdown.js"></script>
   <script src="js/lib/youtube.js"></script>
-	<!--<script src="js/custom/mirror.cycler.js"></script>-->
-
-<script type="text/javascript">
-
-
-$(document).ready(function() {
-
-
-	time.init();
-
-  setTimeout(refreshCalendars, 15000);
-
-
-
-});
-
-$( '#main-slideshow' ).on( 'cycle-before', function(event, optionHash, outgoingSlideEl, incomingSlideEl, forwardFlag) {
-    
-    
-    //console.log(event);
-    //console.log(incomingSlideEl.id);
-
-    if(incomingSlideEl.id == "time-wrap") {
-      $(".top-left").fadeOut();
-      $(".top-right").fadeOut();
-      player.playVideo();
-    }
-    else if(incomingSlideEl.id == "calendar-month-wrap") {
-      $(".top-left").fadeIn();
-      $(".top-right").fadeIn();
-    }
-   // console.log(optionHash);
-    // your event handler code here
-    // argument opts is the slideshow's option hash
-});
-
-$('#main-slideshow').on('cycle-after', function(event, optionHash, outgoingSlideEl, incomingSlideEl, forwardFlag) {
-        
-      //  console.log(incomingSlideEl.id);
-
-        if(incomingSlideEl.id == "time-wrap") {
-          document.alarmStart = moment();
-          $('#main-slideshow').cycle('pause');
-          checkAlarmState();
-          setTimeout(alarmTimeout, 240000);
-        }
-      
-      
-});
-
-
-function alarmTimeout() {
-  var ss = $('#main-slideshow');
-  //console.log(ss);
-  
-  //console.log(ss.data("cycle.opts").currSlide);
-  if(ss.data("cycle.opts").currSlide == 4 && ss.data("cycle.opts").paused) {
-    player.stopVideo();
-    ss.cycle('resume');
-  }
-}
-
-
-function checkAlarmState() {
-
-  var ss = $('#main-slideshow');
-  if(ss.data("cycle.opts").currSlide == 4 && ss.data("cycle.opts").paused) {
-    console.log("checking alarm status");
-    $.ajax({
-		type: 'GET',
-    cache: false,
-		url: '/json-tests/test.json',
-		data: weather.params,
-		success: function (data) {
-			console.log(data);
-      if(data.date) {
-        var datePress = moment(data.date);
-        console.log(datePress);
-        console.log(document.alarmStart);
-
-        if(datePress > document.alarmStart) {
-          console.log("stop alarm");
-          alarmTimeout();
-        }
-        else {
-          console.log("continue playing");
-          setTimeout(checkAlarmState, 5000);
-        }
-        
-      }
-      else {
-        console.log("continue playing");
-        setTimeout(checkAlarmState, 5000);
-      }
-    }
-    });
-
-    
-  }
-}
-
-
-
-
-
-</script>
+	
 
 </body>
 </html>
