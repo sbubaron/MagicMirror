@@ -2,7 +2,7 @@ var countdown = {
     countdownData: [],
 	countdownLocation: '.countdown',
 	apiBase: '/api/gcal-countdown.php',
-	updateInterval: config.countdown.interval || 5000,
+	updateInterval: config.countdown.interval || 1000 * 60 * 60,
     updateDataInterval: config.countdown.dataInterval || 1000 * 60 * 60 * 24,
 	//fadeInterval: config.weather.fadeInterval || 1000,
 	intervalId: null,
@@ -15,7 +15,7 @@ var countdown = {
  */
 countdown.updateCountdownData = function () {
 	
-	if(mainController.state === "running") {
+	//if(mainController.state === "running") {
 
 		$.ajax({
 			type: 'GET',
@@ -30,7 +30,7 @@ countdown.updateCountdownData = function () {
 
 			}
 		});
-	}
+	//}
 
 }
 

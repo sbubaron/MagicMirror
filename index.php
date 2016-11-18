@@ -37,7 +37,7 @@
 
 
   <section class="middle">
-    <div id="main-slideshow" class="fade-container cycle-slideshow" data-cycle-fx="scrollHorz" data-cycle-pause-on-hover="false" data-cycle-speed="200" data-cycle-slides="> div">
+    <div id="main-slideshow" class="fade-container cycle-slideshow" data-cycle-fx="scrollHorz" data-cycle-pause-on-hover="false" data-cycle-speed="1000" data-cycle-timeout="15000" data-cycle-slides="> div">
 
       <div id="loading-wrap" class="item-wrap">
         <div id="loading" class="item-container">
@@ -79,7 +79,7 @@
 
   </section>
 
-
+<!--
   <section class="bottom">
     <div class="bottom-text bottom-item">
       <div>You look awesome!</div>
@@ -92,7 +92,7 @@
         </div>
     </div>
   </section>
-
+-->
   </main>
 
 
