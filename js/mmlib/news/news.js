@@ -10,7 +10,7 @@ var news = {
 	_yqlQS: '?format=json&q=select%20*%20from%20rss%20where%20url%3D',
 	_cacheBuster: Math.floor((new Date().getTime()) / 1200 / 1000),
 	_failedAttempts: 0,
-	fetchInterval: config.news.fetchInterval || 60000,
+	fetchInterval: config.news.fetchInterval || 1000 * 60 * 20,
 	updateInterval: config.news.interval || 5500,
 	fadeInterval: 2000,
 	intervalId: null,
@@ -132,6 +132,7 @@ news.showNews = function () {
 
 news.init = function () {
 
+	console.log("news init");
 	if (this.feed === null || (this.feed instanceof Array === false && typeof this.feed !== 'string')) {
 		return false;
 	} else if (typeof this.feed === 'string') {
@@ -139,14 +140,19 @@ news.init = function () {
 	}
 
 	this.fetchNews();
-	this.showNews();
+	//this.showNews();
 
 	this.fetchNewsIntervalId = setInterval(function () {
 		this.fetchNews()
 	}.bind(this), this.fetchInterval)
 
-	this.intervalId = setInterval(function () {
+	/*this.intervalId = setInterval(function () {
 		this.showNews();
-	}.bind(this), this.updateInterval);
+	}.bind(this), this.updateInterval);*/
 
+}
+
+
+news.getNews = function() {
+	return this.newsItems;
 }

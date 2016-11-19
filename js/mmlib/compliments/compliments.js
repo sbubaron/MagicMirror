@@ -1,11 +1,12 @@
 var compliments = {
-	complimentLocation: '.compliment',
+	complimentLocation: '.headlines',
 	currentCompliment: '',
 	complimentList: {
 		'morning': config.compliments.morning,
 		'afternoon': config.compliments.afternoon,
 		'evening': config.compliments.evening
 	},
+	compliments: [],
 	updateInterval: config.compliments.interval || 30000,
 	fadeInterval: config.compliments.fadeInterval || 4000,
 	intervalId: null
@@ -15,8 +16,6 @@ var compliments = {
  * Changes the compliment visible on the screen
  */
 compliments.updateCompliment = function () {
-
-
 
 	var _list = [];
 
@@ -43,6 +42,8 @@ compliments.updateCompliment = function () {
 		});
 	}
 
+	compliments.compliments = _list;
+	/*
 	// Search for the location of the current compliment in the list
 	var _spliceIndex = _list.indexOf(compliments.currentCompliment);
 
@@ -55,16 +56,21 @@ compliments.updateCompliment = function () {
 	var _randomIndex = Math.floor(Math.random() * _list.length);
 	compliments.currentCompliment = _list[_randomIndex];
 
-	$('.compliment').updateWithText(compliments.currentCompliment, compliments.fadeInterval);
-
+	$(compliments.complimentLocation).updateWithText(compliments.currentCompliment, compliments.fadeInterval);
+	*/
 }
 
 compliments.init = function () {
-
+	console.log("compliement init");
 	this.updateCompliment();
 
 	this.intervalId = setInterval(function () {
 		this.updateCompliment();
 	}.bind(this), this.updateInterval)
 
+}
+
+
+compliments.getCompliments = function() {
+	return compliments.compliments;
 }

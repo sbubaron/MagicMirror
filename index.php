@@ -21,7 +21,7 @@
       <div class="time"><span class="sec"></span></div>
     </div>
     <div class="top-right top-item">
-      <div class="cycle-slideshow temp-slideshow" data-cycle-fx="scrollHorz" data-cycle-speed="400" data-cycle-timeout="10000" data-cycle-pause-on-hover="false" data-cycle-slides="> div">
+      <div class="cycle-slideshow temp-slideshow" data-cycle-fx="scrollHorz" data-cycle-speed="400" data-cycle-timeout="5000" data-cycle-pause-on-hover="false" data-cycle-slides="> div">
         <div>
           <div class="temp-date dimmed">Currently</div>
           <div class="temp large-weather"></div>
@@ -79,11 +79,14 @@
 
   </section>
 
-<!--
+
   <section class="bottom">
     <div class="bottom-text bottom-item">
-      <div>You look awesome!</div>
-        <div id="buttons">
+      <div class="headlines">
+      
+      </div>
+
+        <div id="buttons" style="display: none;">
           <button data-cycle-cmd="prev" data-cycle-context="#main-slideshow">Prev</button>
           <button data-cycle-cmd="next" data-cycle-context="#main-slideshow">Next</button>
           <button data-cycle-cmd="pause" data-cycle-context="#main-slideshow">Pause</button>
@@ -92,7 +95,7 @@
         </div>
     </div>
   </section>
--->
+
   </main>
 
 
@@ -117,8 +120,11 @@
 
   <script src="js/lib/cycle2/cycle2.js"></script>
 
+  <script src="js/mmlib/compliments/compliments.js" type="text/javascript"></script>
+  <script src="js/custom/headlines.js" type="text/javascript"></script>
   <script src="js/mmlib/weather/weather.js" type="text/javascript"></script>
   <script src="js/mmlib/time/time.js" type="text/javascript"></script>
+  <script src="js/mmlib/news/news.js" type="text/javascript"></script>
 
   <script src="js/mmlib/main.js?nocache=<?php echo md5(microtime()) ?>"></script>
 

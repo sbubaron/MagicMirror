@@ -94,12 +94,14 @@ jQuery(document).ready(function($) {
 
 	//countdown.init();
 
-	//compliments.init();
+	news.init();
+
+	compliments.init();
 
 	weather.init();
 
 	countdown.init();
 	
-
+	headlines.init();
 
 });

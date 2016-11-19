@@ -24,6 +24,7 @@ countdown.updateCountdownData = function () {
 			success: function (data) {
 
                 this.countdownData = data;
+                this.updateCountdownSlide();
 				
 			}.bind(this),
 			error: function () {
@@ -66,6 +67,7 @@ countdown.updateCountdownSlide = function() {
 countdown.init = function () {
 
     this.updateCountdownData();
+    
 
 	
 
