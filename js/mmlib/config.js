@@ -62,6 +62,9 @@ var config = {
     headlines: {
         interval: 6000
     },
+    onthisday: {
+        interval: 1000 * 60 * 60 * 24
+    },
     news: {
         feed: 'http://www.nytimes.com/services/xml/rss/nyt/HomePage.xml'
     }

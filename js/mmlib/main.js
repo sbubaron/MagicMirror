@@ -104,4 +104,6 @@ jQuery(document).ready(function($) {
 	
 	headlines.init();
 
+	onthisday.init();
+
 });

@@ -46,10 +46,7 @@
       </div>
     
 
-      <div id="countdown-wrap" class="item-wrap">
-        <div id="countdown" class="countdown item-container">
-        </div>
-      </div>
+      
       <div id="calendar-tomorrow-wrap" class="fullCalendar-container">
         <div id="calendar-tomorrow"></div>
       </div>
@@ -130,6 +127,7 @@
 
 	<script src="js/custom/fullcalendar.config.js"></script>
   <script src="js/custom/countdown.js"></script>
+  <script src="js/custom/onthisday.js"></script>
   <script src="js/lib/youtube.js"></script>
 	
 

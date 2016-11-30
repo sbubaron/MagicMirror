@@ -1,5 +1,6 @@
 var countdown = {
     countdownData: [],
+    countdownList: [],
 	countdownLocation: '.countdown',
 	apiBase: '/api/gcal-countdown.php',
 	updateInterval: config.countdown.interval || 1000 * 60 * 60,
@@ -24,7 +25,12 @@ countdown.updateCountdownData = function () {
 			success: function (data) {
 
                 this.countdownData = data;
-                this.updateCountdownSlide();
+                console.log(data);
+
+                for(var i=0; i<data.length; i++) {
+                    this.countdownList[i] = countdown.buildSentence(i);
+                }
+               // this.updateCountdownSlide();
 				
 			}.bind(this),
 			error: function () {
@@ -79,4 +85,31 @@ countdown.init = function () {
 		this.updateCountdownSlide();
 	}.bind(this), this.updateInterval);
 
+}
+
+
+countdown.getCountdowns = function() {
+	return this.countdownList;
+}
+
+
+countdown.buildSentence = function(index) {
+    
+    if(this.countdownData.length === 0) {
+        return;
+    }
+    
+    var start = moment();
+    
+
+    var end = moment(this.countdownData[index].start);
+    console.log(end);
+    // account for crossing over to midnight the next day
+    
+    var d = moment.duration(end.diff(start));
+    console.log(d.asDays());
+
+    var days = Math.round(d.asDays());
+
+    return days + " days until " + this.countdownData[index].title;
 }

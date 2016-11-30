@@ -20,10 +20,15 @@ headlines.updateHeadline = function () {
 
     headlines.list = headlines.list.concat(_list);
 
+	_list = countdown.getCountdowns();
+    console.log(_list);
+
+    headlines.list = headlines.list.concat(_list);
+
     _list = news.getNews();
     //console.log(_list);
 
-    headlines.list = headlines.list.concat(_list);
+    //headlines.list = headlines.list.concat(_list);
 
     //console.log(headlines.list);
 	// Search for the location of the current compliment in the list
