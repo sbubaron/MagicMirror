@@ -7,11 +7,11 @@ var config = {
         //change weather params here:
         //units: metric or imperial
         params: {
-            q: 'Patchogue,NY',
+            id: '5130672',
             units: 'imperial',
             // if you want a different lang for the weather that what is set above, change it here
             lang: 'en',
-            APPID: '3efff6d147054c27a15320da0731d70a'
+            APPID: '95dfd2ab8d3195a6310b4834135a87e0'
         }
     },
     mainController: {

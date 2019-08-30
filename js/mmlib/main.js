@@ -94,7 +94,7 @@ jQuery(document).ready(function($) {
 
 	//countdown.init();
 
-	news.init();
+	//news.init();
 
 	compliments.init();
 
@@ -102,8 +102,8 @@ jQuery(document).ready(function($) {
 
 	countdown.init();
 	
-	headlines.init();
+	//headlines.init();
 
-	onthisday.init();
+	//onthisday.init();
 
 });

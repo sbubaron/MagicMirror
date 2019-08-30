@@ -96,17 +96,17 @@
   </main>
 
 
-  <script src="js/lib/jQuery/jquery.js"></script>
+  <script src="/js/lib/jQuery/jquery.js"></script>
   <!--<script src="js/lib/jquery.feedToJSON.js"></script>-->
   <!-- <script src="js/ical_parser.js"></script> -->
-  <script src="js/lib/moment/moment-with-locales.min.js"></script>
-	<script src="js/lib/jquery/jquery.matchHeight.js"></script>
-  <script src="js/lib/fullcalendar/fullcalendar.js"></script>
+  <script src="/js/lib/moment/moment-with-locales.min.js"></script>
+	<script src="/js/lib/jquery/jquery.matchHeight.js"></script>
+  <script src="/js/lib/fullcalendar/fullcalendar.js"></script>
 
 
-	<script src="js/mmlib/config.js"></script>
+	<script src="/js/mmlib/config.js"></script>
 
-  <script src="js/custom/controller.js"></script>
+  <script src="/js/custom/controller.js"></script>
   <!--<script src="js/rrule.js"></script>-->
   <!-- <script src="js/version/version.js" type="text/javascript"></script> -->
 
@@ -115,20 +115,20 @@
   <!-- <script src="js/countdown/jquery.countdown.js" type="text/javascript"></script> -->
   <!--<script src="js/countdown/gcal-countdown.js" type="text/javascript"></script>-->
 
-  <script src="js/lib/cycle2/cycle2.js"></script>
+  <script src="/js/lib/cycle2/cycle2.js"></script>
 
-  <script src="js/mmlib/compliments/compliments.js" type="text/javascript"></script>
-  <script src="js/custom/headlines.js" type="text/javascript"></script>
-  <script src="js/mmlib/weather/weather.js" type="text/javascript"></script>
-  <script src="js/mmlib/time/time.js" type="text/javascript"></script>
-  <script src="js/mmlib/news/news.js" type="text/javascript"></script>
+  <script src="/js/mmlib/compliments/compliments.js" type="text/javascript"></script>
 
-  <script src="js/mmlib/main.js?nocache=<?php echo md5(microtime()) ?>"></script>
+  <script src="/js/mmlib/weather/weather.js" type="text/javascript"></script>
+  <script src="/js/mmlib/time/time.js" type="text/javascript"></script>
 
-	<script src="js/custom/fullcalendar.config.js"></script>
-  <script src="js/custom/countdown.js"></script>
-  <script src="js/custom/onthisday.js"></script>
-  <script src="js/lib/youtube.js"></script>
+
+  <script src="/js/mmlib/main.js?nocache=<?php echo md5(microtime()) ?>"></script>
+
+	<script src="/js/custom/fullcalendar.config.js"></script>
+  <script src="/js/custom/countdown.js"></script>
+  <script src="/js/custom/onthisday.js"></script>
+  <script src="/js/lib/youtube.js"></script>
 	
 
 </body>
